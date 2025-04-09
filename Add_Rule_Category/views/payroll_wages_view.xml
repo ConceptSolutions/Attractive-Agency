@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="view_payslip_fields_inherit_tree" model="ir.ui.view">
+            <field name="name">payslip.tree.inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='basic_wage']" position="after">
+                    <field name="allowance_wage" widget="monetary" options="{'currency_field': 'currency_wage_id'}"
+                           optional="show"/>
+                </xpath>
+
+                <xpath expr="//field[@name='allowance_wage']" position="after">
+                    <field name="deduction_wage"
+                           decoration-bf="1" optional="show"/>
+                </xpath>
+
+                <xpath expr="//field[@name='allowance_wage']" position="after">
+                    <field name="gross_wage"
+                           decoration-bf="1" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

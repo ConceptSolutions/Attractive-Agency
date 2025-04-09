@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="view_stock_job_cost" model="ir.ui.view">
+            <field name="name">stock.job.cost.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="job_cost_id"   attrs="{'invisible':[('picking_type_code','not in',('outgoing'))]}" />
+                </field>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

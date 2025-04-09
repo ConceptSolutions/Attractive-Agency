@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_deduction_manger" model="res.groups">
+            <field name="name">Deduction Manager</field>
+        </record>
+        <record id="group_deduction_menu" model="res.groups">
+            <field name="name">Show Deduction Menu</field>
+        </record>
+          <record id="group_deduction_value" model="res.groups">
+            <field name="name">Show Deduction Value</field>
+        </record>
+    </data>
+</odoo>
