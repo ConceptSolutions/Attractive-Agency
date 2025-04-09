@@ -1,0 +1,25 @@
+<odoo>
+    <record id="res_config_settings_field_mobile_required" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.mobile.required.fields</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="50"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='invite_users']" position="after">
+                <div id="mobile_required">
+                    <h2>Contacts</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="mobile_required" class="col-md-3 o_light_label"/>
+                                <field name="mobile_required"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

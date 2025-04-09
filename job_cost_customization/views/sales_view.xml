@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <record id="view_sales_job_cost" model="ir.ui.view">
+            <field name="name">sales.job.costform</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="order_to_jobcost_action" type="object" class="oe_stat_button" icon="fa-book">
+                    <field string="Job Costs" name="job_cost_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+
+         <record id="view_job_cost" model="ir.ui.view">
+            <field name="name">job.cost.form</field>
+            <field name="model">job.costing</field>
+            <field name="inherit_id" ref="odoo_job_costing_management.job_costing_form_view"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//div[@name='button_box']" position="inside">
+                      <button name="action_view_sale_order"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o">
+                          Sale Order
+                            </button>
+                     <button name="open_stock_picking"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o">
+                              <field string="Deliveries" name="count_stock" widget="statinfo"/>
+                            </button>
+                </xpath>
+                <field name="name" position="before">
+                    <field name="order_id" invisible="1"/>
+                </field>
+
+                <xpath expr="//field[@name='job_cost_line_ids']/tree/field[@name='actual_invoice_quantity']" position="after">
+                    <field name="delivery_cost" readonly="1" force_save="1"/>
+                </xpath>
+
+
+            </field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record id="view_order_form_design_number" model="ir.ui.view">
+            <field name="name">view.order.form.design.number</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority">99</field>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="design_number"/>
+                </field>
+                <field name="state" position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="manager_approve,draft,sent,customer_done,sale"/>
+                </field>
+<!--                <button name="action_quotation_send" position="replace">-->
+<!--                    <button name="action_quotation_send" string="Send by Email" type="object" states="manager_approve" data-hotkey="g" context="{'validate_analytic': True}"/>-->
+<!--                </button>-->
+                <xpath expr="//header/button[@name='action_confirm']" position="replace">
+                    <button name="action_confirm"  data-hotkey="v" string="Confirm" type="object" states="customer_done" class="oe_highlight"/>
+                </xpath>
+                <button name="action_quotation_send" position="before">
+                    <button name="action_manager_approve" groups="sale_customize.manager_approve_group" string="Manager Approve" type="object" states="manager_approve" class="oe_highlight"/>
+                    <button name="action_customer_done" groups="sale_customize.customer_done_group" string="Customer Done" type="object" states="sent" class="oe_highlight"/>
+                </button>
+
+            </field>
+        </record>
+        <record id="view_order_search_design_number" model="ir.ui.view">
+            <field name="name">view.order.search.design.number</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <filter name="my_quotation" position="before">
+                    <field name="design_number"/>
+                    <filter string="Design Number" name="design_number" domain="[('design_number', 'ilike', self)]"/>
+                </filter>
+            </field>
+        </record>
+    </data>
+</odoo>

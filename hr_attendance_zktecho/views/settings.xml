@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="merit_res_config_settings_view_form23" model="ir.ui.view">
+            <field name="name">res.config.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='group_attendance_use_pin']/../../.." position="after">
+                    <h2>Check-In/Out</h2>
+                    <div class="row mt16 o_settings_container" name="one_days_login_setting_container">
+                        <div class="col-12 col-lg-6 o_setting_box" title="Set True System Will Create One Day Login if one check in the check will the same check in ">
+                            <div class="o_setting_left_pane">
+                                <field name="one_days_login"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">One Day Login</span>
+                                <div class="text-muted">
+                                    Set True System Will Create One Day Login if one check in the check will the same check in
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
