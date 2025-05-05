@@ -50,6 +50,7 @@ class AccountMoveLine(models.Model):
 
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
+    company_id = fields.Many2one('res.company', string='Company', index=True, default=lambda self: self.env.user.company_id)
     journal_id = fields.Many2one("account.journal", string="Journal", domain=[('cheque_cash', '=', True)],copy=False)
     journal_cheque = fields.Many2one('account.journal', string="Journal", copy=False)
     journal_under_collection = fields.Many2one('account.journal', string="Under Collection Journal",

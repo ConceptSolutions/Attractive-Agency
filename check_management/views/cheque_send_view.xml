@@ -15,6 +15,7 @@
             <xpath expr="//header" position="replace">
                 <header>
                     <field name="state" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
                     <!--                    <field name="available_partner_bank_ids" invisible="1"/>-->
                     <field name="type_cheq" invisible="1"/>
                     <field name="state_cheque" invisible="1"/>
