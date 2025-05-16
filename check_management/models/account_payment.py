@@ -1002,9 +1002,8 @@ class AccountPayment(models.Model):
         return lines
     def create_journal_send_state(self, journal, debit_account):
         lines = []
-
         second_journal_line = {
-            'account_id': debit_account.id,
+            'account_id': debit_account.id or journal.default_account_id.id,
             'partner_id': self.partner_id.id,
              'name': self.cheque_ref,
                     'ref':self.cheque_no,
@@ -1013,6 +1012,7 @@ class AccountPayment(models.Model):
             'credit': 0,
             'currency_id': self.currency_id.id,'amount_currency':self.amount
         }
+        print('second_journal_line', second_journal_line)
         lines.append((0, 0, second_journal_line))
         first_journal_line = {
             'account_id': journal.default_account_id.id,
@@ -1024,8 +1024,9 @@ class AccountPayment(models.Model):
             'credit': self.amount,
             'currency_id': self.currency_id.id,'amount_currency':-self.amount
         }
+        print('first_journal_line', first_journal_line)
         lines.append((0, 0, first_journal_line))
-
+        print('lines', lines)
         return lines
 
     def create_journal_lines(self, journal, credit_account):
@@ -1291,6 +1292,7 @@ class AccountPayment(models.Model):
 
     def get_collect_form_bank_send_cheque(self):
 
+        print('helloooooo')
         move2 = self.env['account.move'].create({'date': self.date_collection,
                                                  'ref': "Cheque Num/" + self.cheque_no or '',
                                                  'partner_id': self.partner_id.id or '',
@@ -1593,7 +1595,6 @@ class AccountPayment(models.Model):
         return move2
 
     def save_payment(self):
-        print('hello save')
         if self.is_transfer == True:
             self.transfer_journal_check()
             self.is_transfer = False
