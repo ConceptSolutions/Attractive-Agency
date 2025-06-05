@@ -1180,7 +1180,7 @@ class AccountPayment(models.Model):
                                                      'journal_id': self.journal_under_collection.id,
                                                      'line_ids': self.create_journal_receive_state(
                                                          self.journal_under_collection,
-                                                         self.journal_id.default_account_id),
+                                                         self.journal_id.default_account_id or self.journal_cheque.default_account_id),
                                                      'cheque_number': self.cheque_no,
                                                      'currency_id':self.currency_id.id
 
