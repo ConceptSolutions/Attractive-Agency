@@ -14,7 +14,7 @@ class AccountMove(models.Model):
         try:
              if self._context.get('active_model') == 'account.move':
                 for move in self:
-                    # print('moveeeeeeeeeeeee', move.id)
+                    
                     # print('payment_difference_handling', move.payment_id.payment_difference_handling)
                     # print('payment_difference', move.payment_id.payment_difference)
                     # if move.payment_id and move.payment_id.payment_difference_handling == "reconcile":
