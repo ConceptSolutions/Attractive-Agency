@@ -603,7 +603,7 @@ class AccountPayment(models.Model):
                 line_vals_list = self.create_move_line_send_cheques( self.journal_cheque if self.journal_cheque
                     else self.journal_id,
                     account_id)
-        return line_vals_list + write_off_line_vals_list
+        return line_vals_list
 
     def _get_payment_name(self,journal,date):
 
@@ -1945,5 +1945,4 @@ class AccountPayment(models.Model):
                 'target': 'new',
                 'context': {'default_is_vendor_payments': True,'active_ids':self.ids}
             }
-
 
